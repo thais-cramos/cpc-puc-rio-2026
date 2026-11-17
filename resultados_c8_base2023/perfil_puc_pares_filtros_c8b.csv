@@ -1,0 +1,49 @@
+﻿Area;Área;Grupo;N;ENADE;IDD;Mestres;Doutores;Regime;Org. didática;Infraestrutura;Oportunidades
+5710;Engenharia Civil;PUC-Rio;1;3,93;3,83;4,32;4,13;2,46;2,93;3,84;3,81
+5710;Engenharia Civil;Pares (todos);131;3,75;3,68;4,51;3,43;4,93;2,49;2,7;2,97
+5710;Engenharia Civil;Pares públicos;117;3,81;3,7;4,49;3,43;4,97;2,4;2,59;2,97
+5710;Engenharia Civil;Pares privados;14;3,26;3,56;4,68;3,46;4,64;3,27;3,55;3,01
+5710;Engenharia Civil;Pares univ. comunitárias;4;2,97;3,41;5,0;3,53;4,76;3,17;3,68;3,09
+5710;Engenharia Civil;Área;799;2,23;2,24;4,01;2,63;4,09;3,15;3,23;3,0
+6208;Engenharia de Produção;PUC-Rio;1;3,96;2,41;4,47;3,82;1,9;2,56;3,94;4,1
+6208;Engenharia de Produção;Pares (todos);151;2,48;2,6;4,57;2,89;4,21;4,19;4,36;4,22
+6208;Engenharia de Produção;Pares públicos;16;2,7;2,61;4,3;3,26;4,68;3,79;3,94;4,12
+6208;Engenharia de Produção;Pares privados;135;2,46;2,6;4,6;2,85;4,15;4,24;4,41;4,24
+6208;Engenharia de Produção;Pares univ. comunitárias;28;2,73;2,68;4,78;2,87;3,86;4,02;4,33;4,3
+6208;Engenharia de Produção;Área;484;2,42;2,4;4,22;2,93;4,06;3,08;3,25;3,2
+21;Arquitetura e Urbanismo;PUC-Rio;1;3,53;2,36;3,94;2,53;0,0;2,73;3,78;3,54
+21;Arquitetura e Urbanismo;Pares (todos);72;2,33;2,38;3,56;1,59;1,55;3,48;3,6;3,52
+21;Arquitetura e Urbanismo;Pares públicos;3;2,63;1,9;4,41;2,23;1,34;3,02;3,33;3,88
+21;Arquitetura e Urbanismo;Pares privados;69;2,31;2,4;3,53;1,56;1,56;3,5;3,61;3,5
+21;Arquitetura e Urbanismo;Pares univ. comunitárias;11;2,41;2,34;4,45;1,75;1,82;3,41;3,82;3,94
+21;Arquitetura e Urbanismo;Área;521;2,47;2,66;4,08;2,63;3,96;2,98;3,15;3,14
+5902;Engenharia Mecânica;PUC-Rio;1;4,19;3,78;4,31;4,14;2,33;2,99;4,16;4,02
+5902;Engenharia Mecânica;Pares (todos);87;3,56;3,34;4,76;3,92;4,92;2,12;2,66;3,25
+5902;Engenharia Mecânica;Pares públicos;80;3,57;3,33;4,74;3,93;4,96;2,03;2,57;3,21
+5902;Engenharia Mecânica;Pares privados;7;3,36;3,53;4,91;3,73;4,46;3,14;3,72;3,68
+5902;Engenharia Mecânica;Pares univ. comunitárias;4;3,16;3,82;4,92;3,6;4,64;3,04;3,78;3,51
+5902;Engenharia Mecânica;Área;439;2,18;2,31;4,19;3,03;3,95;2,85;3,06;3,02
+5806;Engenharia Elétrica;PUC-Rio;1;3,55;2,81;4,22;4,22;2,88;3,08;3,9;3,83
+5806;Engenharia Elétrica;Pares (todos);95;3,44;3,48;4,59;3,83;4,81;2,68;2,9;3,29
+5806;Engenharia Elétrica;Pares públicos;79;3,55;3,49;4,56;3,82;4,97;2,57;2,78;3,29
+5806;Engenharia Elétrica;Pares privados;16;2,91;3,42;4,71;3,87;4,02;3,22;3,51;3,31
+5806;Engenharia Elétrica;Pares univ. comunitárias;7;3,08;3,41;4,96;3,62;4,14;3,19;3,57;3,53
+5806;Engenharia Elétrica;Área;398;2,25;2,58;4,03;3,08;4,14;3,11;3,19;3,1
+6307;Engenharia Ambiental;PUC-Rio;1;2,87;1,74;4,43;4,84;3,07;1,34;3,09;3,42
+6307;Engenharia Ambiental;Pares (todos);66;2,28;2,19;4,01;3,26;4,25;2,27;2,1;2,3
+6307;Engenharia Ambiental;Pares públicos;38;2,74;2,35;4,11;3,65;4,91;2,26;2,05;2,64
+6307;Engenharia Ambiental;Pares privados;28;1,67;1,96;3,88;2,74;3,34;2,29;2,17;1,84
+6307;Engenharia Ambiental;Pares univ. comunitárias;2;1,96;1,61;4,62;2,43;3,74;2,89;2,78;2,36
+6307;Engenharia Ambiental;Área;143;2,57;2,52;4,28;3,56;4,44;2,93;2,89;3,05
+6008;Engenharia Química;PUC-Rio;1;3,12;2,65;4,13;4,46;2,97;2,35;3,55;3,71
+6008;Engenharia Química;Pares (todos);53;2,34;2,47;4,84;3,57;4,49;3,87;4,14;4,03
+6008;Engenharia Química;Pares públicos;8;2,77;2,21;4,74;3,75;5,0;3,1;3,47;3,81
+6008;Engenharia Química;Pares privados;45;2,26;2,51;4,86;3,54;4,4;4,01;4,26;4,06
+6008;Engenharia Química;Pares univ. comunitárias;22;2,39;2,51;4,8;3,29;4,17;3,84;4,17;4,03
+6008;Engenharia Química;Área;161;2,34;2,26;4,51;3,64;4,35;2,74;3,07;3,04
+5814;Engenharia de Controle e Automação;PUC-Rio;1;2,77;1,78;4,41;4,01;2,84;1,36;3,77;3,74
+5814;Engenharia de Controle e Automação;Pares (todos);42;2,38;1,89;4,52;3,75;4,58;2,11;2,5;2,49
+5814;Engenharia de Controle e Automação;Pares públicos;22;2,9;1,84;4,48;3,45;5,0;1,96;2,32;2,68
+5814;Engenharia de Controle e Automação;Pares privados;20;1,81;1,94;4,56;4,08;4,12;2,27;2,69;2,28
+5814;Engenharia de Controle e Automação;Pares univ. comunitárias;2;2,82;2,32;5,0;3,39;4,69;1,74;2,33;2,19
+5814;Engenharia de Controle e Automação;Área;135;2,45;2,2;4,09;3,03;4,14;2,7;3,1;2,93

@@ -1,0 +1,44 @@
+classDiagram
+  direction LR
+  class Instituicao {
+    +codigoIES
+    +categoriaAdministrativa
+  }
+  class PerfilDocenteIES {
+    <<Censo 2023, por IES>>
+    +regime de trabalho
+    +titulacao, idade
+  }
+  class DocentesPorArea {
+    <<Painel INEP, IES x area>>
+    +regime de trabalho
+  }
+  class AreaCine {
+    +codigoCine
+  }
+  class AreaAvaliacao {
+    <<CPC>>
+    +codigoArea
+  }
+  class Curso {
+    <<CPC>>
+    +codigoCurso
+  }
+  class AvaliacaoCPC {
+    <<2017, 2019, 2023>>
+    +ciclo
+    +cpcContinuo, cpcFaixa
+  }
+  class IndicadorCPC {
+    +tipo: 1 dos 8
+    +notaBruta, notaPadronizada
+    +controlavelPelaIES
+  }
+  Instituicao "1" --> "0..*" Curso : oferece
+  Instituicao "1" --> "0..*" PerfilDocenteIES : tem
+  Instituicao "1" --> "0..*" DocentesPorArea : registra
+  AreaCine "1" --> "0..*" DocentesPorArea : agrega
+  AreaAvaliacao "1" --> "0..*" Curso : avalia
+  AreaAvaliacao "0..*" --> "0..1" AreaCine : corresponde a
+  Curso "1" *-- "1..3" AvaliacaoCPC : recebe
+  AvaliacaoCPC "1" *-- "8" IndicadorCPC : compoe

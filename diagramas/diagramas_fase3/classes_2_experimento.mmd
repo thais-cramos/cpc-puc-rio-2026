@@ -1,0 +1,97 @@
+﻿classDiagram
+  direction LR
+  class AreaAvaliacao {
+    <<ver modelo de dados>>
+  }
+  class Curso {
+    <<ver modelo de dados>>
+  }
+  class IndicadorCPC {
+    <<ver modelo de dados>>
+  }
+  class PerfilDocenteIES {
+    <<ver modelo de dados>>
+  }
+  class Cenario {
+    +string codigo C1 a C8
+    +string hipotese
+    +string familia
+    +List~TipoIndicador~ variaveis
+  }
+  class Execucao {
+    <<uma linha da planilha>>
+    +int numero
+    +string escalonador
+    +string algoritmo
+    +int K
+    +float proporcaoTreino
+    +float /silhuetaTesteMedia
+    +float /ganhoMedio
+    +float /ARI
+  }
+  class Divisao {
+    <<uma divisao treino/teste>>
+    +int semente
+    +float silhuetaTreino
+    +float silhuetaTeste
+    +float silhuetaNula
+    +float daviesBouldin
+    +float jaccardPUC
+  }
+  class Grupo {
+    +int idGrupo
+    +string perfil
+  }
+  class ReferenciaKNN {
+    +float distancia
+    +float freqEntreDivisoes
+  }
+  class PrevisaoRegime {
+    <<Random Forest>>
+    +float regimeReal
+    +float regimePrevisto
+    +float /residuo
+  }
+  class ConfiguracaoKNN {
+    <<criterio de vizinhanca>>
+    +bool mesmaArea
+    +bool mesmoGrupoC2
+    +bool somentePrivadas
+    +List~string~ atributosDistancia
+    +string metrica
+    +int k
+    +bool regimeMaiorQuePUC
+    +float freqMinimaEntreDivisoes
+  }
+  class ConfiguracaoRF {
+    <<modelo do Regime esperado>>
+    +string alvo
+    +string nivel
+    +List~string~ atributos
+    +List~string~ excluidosPorVazamento
+    +string modeloBase
+    +string validacao
+  }
+  class DiagnosticoIndicador {
+    +float gapPares
+    +float gapArea
+    +float meta
+  }
+  Execucao "0..*" --> "1" AreaAvaliacao : roda na area
+  Execucao "0..*" --> "1" Cenario : aplica
+  Execucao "1" *-- "10" Divisao : repetida em
+  Divisao "1" *-- "K" Grupo : produz
+  Curso "0..*" --> "0..*" Grupo : pertence a
+  Curso "1" --> "0..*" ReferenciaKNN : PUC-Rio busca
+  ReferenciaKNN "0..*" --> "1" Curso : referencia
+  Curso "1" --> "0..1" PrevisaoRegime : tem
+  PrevisaoRegime "0..*" --> "1" PerfilDocenteIES : usa
+  Curso "1" --> "0..*" DiagnosticoIndicador : recebe
+  DiagnosticoIndicador "0..*" --> "1" IndicadorCPC : sobre
+  DiagnosticoIndicador "0..*" --> "1" Grupo : compara com pares do
+  ReferenciaKNN "0..*" --> "1" ConfiguracaoKNN : selecionada por
+  ConfiguracaoKNN "0..*" --> "1" Grupo : busca dentro do
+  PrevisaoRegime "0..*" --> "1" ConfiguracaoRF : gerada por
+  note for ConfiguracaoKNN "Distancia so no que a PUC-Rio nao controla:\nporte, perfil dos alunos, ENADE, IDD.\nReferencia = vizinho com Regime maior\nque o da PUC-Rio e estavel nas 10 divisoes."
+  note for ConfiguracaoRF "Alvo: % de docentes nao horistas do curso.\nSem a composicao de regime do curso (vazamento).\nComparado a media e a regressao linear;\nresiduo = Regime real - esperado."
+

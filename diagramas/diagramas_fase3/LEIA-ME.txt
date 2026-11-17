@@ -1,0 +1,6 @@
+Modelos conceituais da fase 3 (substituem os da etapa 1).
+classes_1_dados (.mmd/.png): modelo conceitual dos dados - fontes (CPC, Censo 2023 por IES, painel INEP por IES x área) e como se ligam.
+classes_2_experimento (.mmd/.png): experimento (representação C1-C8, cenário = linha da planilha, execução = divisão treino/teste) e diagnóstico (k-NN, Random Forest, metas).
+modelo_classes_v2 (.mmd/.png): rascunho com tudo num diagrama só (layout automático, só para consulta).
+to_be_v2 (.bpmn/.png): processo TO-BE em BPMN 2.0 com DI; abre no bpmn.io ou no Camunda Modeler.
+Os .mmd são Mermaid e podem ser editados em mermaid.live.

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_TO_BE" targetNamespace="https://puc-rio.br/projeto-cpc" exporter="Camunda Modeler" exporterVersion="5.52.0">
+  <bpmn:process id="Process_TO_BE" name="TO_BE - analise de indicadores" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_TO_BE">
+      <bpmn:lane id="Lane_TO_BE_1" name="Equipe de dados">
+        <bpmn:flowNodeRef>t_get</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_integrate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_validate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_features</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_cluster</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_evaluate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_report</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_gate_data</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_gate_result</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_TO_BE_0" name="Gestao academica">
+        <bpmn:flowNodeRef>t_scope</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_receive</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_end</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="t_start" name="Demanda de diagnostico">
+      <bpmn:outgoing>tb1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="t_scope" name="Definir escopo e pares">
+      <bpmn:incoming>tb1</bpmn:incoming>
+      <bpmn:outgoing>tb2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_get" name="Obter CPC e Censo">
+      <bpmn:incoming>tb2</bpmn:incoming>
+      <bpmn:outgoing>tb3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_integrate" name="Integrar dados">
+      <bpmn:incoming>tb3</bpmn:incoming>
+      <bpmn:incoming>tb7</bpmn:incoming>
+      <bpmn:outgoing>tb4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_validate" name="Validar completude e comparabilidade">
+      <bpmn:incoming>tb4</bpmn:incoming>
+      <bpmn:outgoing>tb5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="t_gate_data" name="Dados adequados?" gatewayDirection="Diverging">
+      <bpmn:incoming>tb5</bpmn:incoming>
+      <bpmn:outgoing>tb6</bpmn:outgoing>
+      <bpmn:outgoing>tb8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_fix" name="Revisar selecao e tratamento">
+      <bpmn:incoming>tb6</bpmn:incoming>
+      <bpmn:outgoing>tb7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_features" name="Construir atributos dos dois cenarios">
+      <bpmn:incoming>tb8</bpmn:incoming>
+      <bpmn:outgoing>tb9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_cluster" name="Executar K-means e hierarquico">
+      <bpmn:incoming>tb9</bpmn:incoming>
+      <bpmn:incoming>tb13</bpmn:incoming>
+      <bpmn:outgoing>tb10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_evaluate" name="Avaliar e interpretar">
+      <bpmn:incoming>tb10</bpmn:incoming>
+      <bpmn:outgoing>tb11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="t_gate_result" name="Resultados interpretaveis?" gatewayDirection="Diverging">
+      <bpmn:incoming>tb11</bpmn:incoming>
+      <bpmn:outgoing>tb12</bpmn:outgoing>
+      <bpmn:outgoing>tb14</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_tune" name="Revisar parametros">
+      <bpmn:incoming>tb12</bpmn:incoming>
+      <bpmn:outgoing>tb13</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_report" name="Produzir diagnosticos">
+      <bpmn:incoming>tb14</bpmn:incoming>
+      <bpmn:outgoing>tb15</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="t_receive" name="Discutir diagnosticos">
+      <bpmn:incoming>tb15</bpmn:incoming>
+      <bpmn:outgoing>tb16</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="t_end" name="Encerrar">
+      <bpmn:incoming>tb16</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="tb1" sourceRef="t_start" targetRef="t_scope" />
+    <bpmn:sequenceFlow id="tb2" sourceRef="t_scope" targetRef="t_get" />
+    <bpmn:sequenceFlow id="tb3" sourceRef="t_get" targetRef="t_integrate" />
+    <bpmn:sequenceFlow id="tb4" sourceRef="t_integrate" targetRef="t_validate" />
+    <bpmn:sequenceFlow id="tb5" sourceRef="t_validate" targetRef="t_gate_data" />
+    <bpmn:sequenceFlow id="tb6" name="Nao" sourceRef="t_gate_data" targetRef="t_fix" />
+    <bpmn:sequenceFlow id="tb7" sourceRef="t_fix" targetRef="t_integrate" />
+    <bpmn:sequenceFlow id="tb8" name="Sim" sourceRef="t_gate_data" targetRef="t_features" />
+    <bpmn:sequenceFlow id="tb9" sourceRef="t_features" targetRef="t_cluster" />
+    <bpmn:sequenceFlow id="tb10" sourceRef="t_cluster" targetRef="t_evaluate" />
+    <bpmn:sequenceFlow id="tb11" sourceRef="t_evaluate" targetRef="t_gate_result" />
+    <bpmn:sequenceFlow id="tb12" name="Nao" sourceRef="t_gate_result" targetRef="t_tune" />
+    <bpmn:sequenceFlow id="tb13" sourceRef="t_tune" targetRef="t_cluster" />
+    <bpmn:sequenceFlow id="tb14" name="Sim" sourceRef="t_gate_result" targetRef="t_report" />
+    <bpmn:sequenceFlow id="tb15" sourceRef="t_report" targetRef="t_receive" />
+    <bpmn:sequenceFlow id="tb16" sourceRef="t_receive" targetRef="t_end" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_TO_BE">
+    <bpmndi:BPMNPlane id="Plane_TO_BE" bpmnElement="Process_TO_BE">
+      <bpmndi:BPMNShape id="Shape_Lane_TO_BE_0" bpmnElement="Lane_TO_BE_0" isHorizontal="true">
+        <dc:Bounds x="160" y="40" width="2150" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_TO_BE_1" bpmnElement="Lane_TO_BE_1" isHorizontal="true">
+        <dc:Bounds x="160" y="220" width="2150" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_start" bpmnElement="t_start">
+        <dc:Bounds x="200" y="110" width="42" height="42" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="190" y="152" width="63" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_scope" bpmnElement="t_scope">
+        <dc:Bounds x="330" y="90" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_get" bpmnElement="t_get">
+        <dc:Bounds x="545" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_integrate" bpmnElement="t_integrate">
+        <dc:Bounds x="760" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_validate" bpmnElement="t_validate">
+        <dc:Bounds x="970" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_gate_data" bpmnElement="t_gate_data" isMarkerVisible="true">
+        <dc:Bounds x="1180" y="295" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1177" y="349" width="61" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_fix" bpmnElement="t_fix">
+        <dc:Bounds x="1121" y="482" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_features" bpmnElement="t_features">
+        <dc:Bounds x="1310" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_cluster" bpmnElement="t_cluster">
+        <dc:Bounds x="1520" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_evaluate" bpmnElement="t_evaluate">
+        <dc:Bounds x="1730" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_gate_result" bpmnElement="t_gate_result" isMarkerVisible="true">
+        <dc:Bounds x="1940" y="295" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1930" y="257.5" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_tune" bpmnElement="t_tune">
+        <dc:Bounds x="1730" y="582" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_report" bpmnElement="t_report">
+        <dc:Bounds x="2060" y="285" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_receive" bpmnElement="t_receive">
+        <dc:Bounds x="2060" y="90" width="172" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_t_end" bpmnElement="t_end">
+        <dc:Bounds x="2260" y="110" width="42" height="42" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2260" y="152" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_tb1" bpmnElement="tb1">
+        <di:waypoint x="242" y="131" />
+        <di:waypoint x="330" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb2" bpmnElement="tb2">
+        <di:waypoint x="502" y="128" />
+        <di:waypoint x="545" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb3" bpmnElement="tb3">
+        <di:waypoint x="717" y="323" />
+        <di:waypoint x="760" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb4" bpmnElement="tb4">
+        <di:waypoint x="932" y="323" />
+        <di:waypoint x="970" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb5" bpmnElement="tb5">
+        <di:waypoint x="1142" y="323" />
+        <di:waypoint x="1180" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb6" bpmnElement="tb6">
+        <di:waypoint x="1234" y="322" />
+        <di:waypoint x="1234" y="401" />
+        <di:waypoint x="1180" y="401" />
+        <di:waypoint x="1180" y="482" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1196" y="426" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb7" bpmnElement="tb7">
+        <di:waypoint x="1121" y="502" />
+        <di:waypoint x="846" y="500" />
+        <di:waypoint x="846" y="361" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb8" bpmnElement="tb8">
+        <di:waypoint x="1234" y="322" />
+        <di:waypoint x="1310" y="323" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1263" y="298" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb9" bpmnElement="tb9">
+        <di:waypoint x="1482" y="323" />
+        <di:waypoint x="1520" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb10" bpmnElement="tb10">
+        <di:waypoint x="1692" y="323" />
+        <di:waypoint x="1730" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb11" bpmnElement="tb11">
+        <di:waypoint x="1902" y="323" />
+        <di:waypoint x="1940" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb12" bpmnElement="tb12">
+        <di:waypoint x="1967" y="349" />
+        <di:waypoint x="1967" y="640" />
+        <di:waypoint x="1902" y="640" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1926" y="618" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb13" bpmnElement="tb13">
+        <di:waypoint x="1730" y="594" />
+        <di:waypoint x="1711" y="594" />
+        <di:waypoint x="1711" y="349" />
+        <di:waypoint x="1692" y="349" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb14" bpmnElement="tb14">
+        <di:waypoint x="1994" y="322" />
+        <di:waypoint x="2060" y="323" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2018" y="298" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb15" bpmnElement="tb15">
+        <di:waypoint x="2221" y="285" />
+        <di:waypoint x="2220" y="230" />
+        <di:waypoint x="2060" y="230" />
+        <di:waypoint x="2060" y="156" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_tb16" bpmnElement="tb16">
+        <di:waypoint x="2232" y="129" />
+        <di:waypoint x="2260" y="131" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,13 @@
+﻿Área;Método;ARI com o K-means C2;Menor grupo;Maior grupo
+Engenharia Civil;ward;0,4613010144174323;64;165
+Engenharia Civil;average;0,01653405509447291;1;431
+Engenharia Civil;complete;0,2642814976522804;58;238
+Engenharia Civil;weighted;0,5014296023805963;51;160
+Arquitetura e Urbanismo;ward;0,4516873603046349;41;83
+Arquitetura e Urbanismo;average;0,034751565980198594;2;252
+Arquitetura e Urbanismo;complete;0,1796694169597298;15;114
+Arquitetura e Urbanismo;weighted;0,33668038151012086;2;147
+Engenharia de Produção;ward;0,5790320592431617;20;127
+Engenharia de Produção;average;0,05440991936613266;8;272
+Engenharia de Produção;complete;0,32884723292436485;25;141
+Engenharia de Produção;weighted;0,2080915204831915;3;227

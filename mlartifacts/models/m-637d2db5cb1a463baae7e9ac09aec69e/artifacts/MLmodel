@@ -1,0 +1,50 @@
+artifact_path: file:///G:/Meu%20Drive/Mestrado%20_%20Eng_Ind/IND2622%20-%20Ciencia%20de%20dados%20para%20processos%20de%20negocios/Trabalho%20final%20-%20CPC%20%28escolhido%29/Projeto_CPC_PUC_Rio_2026/mlartifacts/models/m-637d2db5cb1a463baae7e9ac09aec69e/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.7
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types:
+    - sklearn.tree._tree.Tree
+is_signature_from_type_hint: false
+mlflow_version: 3.17.2
+model_id: m-637d2db5cb1a463baae7e9ac09aec69e
+model_size_bytes: 13787582
+model_uuid: m-637d2db5cb1a463baae7e9ac09aec69e
+prompts: null
+run_id: b1261a75f37342509f4f694f36020542
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "IES % integral", "required": true}, {"type":
+    "double", "name": "IES % dedica\u00e7\u00e3o exclusiva", "required": true}, {"type":
+    "double", "name": "IES % parcial", "required": true}, {"type": "double", "name":
+    "IES % doutores", "required": true}, {"type": "double", "name": "IES % mestres",
+    "required": true}, {"type": "double", "name": "IES % 60+ anos", "required": true},
+    {"type": "double", "name": "IES docentes (log)", "required": true}, {"type": "double",
+    "name": "IES t\u00e9cnicos por docente", "required": true}, {"type": "double",
+    "name": "Universidade", "required": true}, {"type": "double", "name": "Comunit\u00e1ria",
+    "required": true}, {"type": "double", "name": "Sem fins lucrativos", "required":
+    true}, {"type": "double", "name": "Capital", "required": true}, {"type": "double",
+    "name": "\u00c1rea 5710", "required": true}, {"type": "double", "name": "\u00c1rea
+    6208", "required": true}, {"type": "double", "name": "\u00c1rea 21", "required":
+    true}, {"type": "double", "name": "\u00c1rea 5902", "required": true}, {"type":
+    "double", "name": "\u00c1rea 5806", "required": true}, {"type": "double", "name":
+    "\u00c1rea 6307", "required": true}, {"type": "double", "name": "\u00c1rea 6008",
+    "required": true}, {"type": "double", "name": "\u00c1rea 5814", "required": true}]'
+  outputs: '[{"type": "double", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-13 13:20:26.612216'

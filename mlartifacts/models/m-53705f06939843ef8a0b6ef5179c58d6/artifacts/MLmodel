@@ -1,0 +1,23 @@
+artifact_path: file:///G:/Meu%20Drive/Mestrado%20_%20Eng_Ind/IND2622%20-%20Ciencia%20de%20dados%20para%20processos%20de%20negocios/Trabalho%20final%20-%20CPC%20%28escolhido%29/Projeto_CPC_PUC_Rio_2026/mlartifacts/models/m-53705f06939843ef8a0b6ef5179c58d6/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.7
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types: null
+mlflow_version: 3.17.2
+model_id: m-53705f06939843ef8a0b6ef5179c58d6
+model_size_bytes: 27280
+model_uuid: m-53705f06939843ef8a0b6ef5179c58d6
+prompts: null
+run_id: d78e320911854352a69208349e524b9c
+utc_time_created: '2026-11-03 22:14:25.755004'

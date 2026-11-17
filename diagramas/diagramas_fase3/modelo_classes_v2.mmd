@@ -1,0 +1,138 @@
+classDiagram
+  direction LR
+
+  namespace FontesDeDados {
+    class Instituicao {
+      +int codigoIES
+      +string nome
+      +string categoriaAdministrativa
+      +string organizacaoAcademica
+      +string uf
+    }
+    class PerfilDocenteIES {
+      +int ano
+      +int qtdTempoIntegral
+      +int qtdTempoParcial
+      +int qtdHorista
+      +int qtdDoutores
+      +int qtdMestres
+      +float idadeMedia
+    }
+    class DocentesPorArea {
+      +int ano
+      +int integralComDE
+      +int integralSemDE
+      +int tempoParcial
+      +int horista
+      +int doutores
+      +int mestres
+    }
+    class AreaCine {
+      +string codigoCine
+      +string nome
+    }
+    class AreaAvaliacao {
+      +int codigoArea
+      +string nome
+    }
+    class Curso {
+      +int codigoCurso
+      +string municipio
+      +string modalidade
+    }
+    class AvaliacaoCPC {
+      +int ciclo
+      +float cpcContinuo
+      +int cpcFaixa
+      +int nParticipantes
+    }
+    class IndicadorCPC {
+      +TipoIndicador tipo
+      +float notaBruta
+      +float notaPadronizada
+      +bool controlavelPelaIES
+    }
+    class TipoIndicador {
+      <<enumeration>>
+      ENADE
+      IDD
+      Mestres
+      Doutores
+      RegimeTrabalho
+      OrganizacaoDidatica
+      Infraestrutura
+      Oportunidades
+    }
+  }
+
+  namespace Experimento {
+    class Representacao {
+      +string codigo
+      +string hipotese
+      +string familia
+    }
+    class Cenario {
+      +int numero
+      +string escalonador
+      +string algoritmo
+      +int K
+      +float proporcaoTreino
+      +float /silhuetaTesteMedia
+      +float /ganhoMedio
+      +float /ARI
+    }
+    class Execucao {
+      +int semente
+      +float silhuetaTreino
+      +float silhuetaTeste
+      +float silhuetaNula
+      +float daviesBouldin
+      +float jaccardPUC
+    }
+    class Grupo {
+      +int idGrupo
+      +string perfil
+    }
+  }
+
+  namespace Diagnostico {
+    class ReferenciaKNN {
+      +float distancia
+      +float freqEntreDivisoes
+    }
+    class PrevisaoRegime {
+      +float regimeReal
+      +float regimePrevisto
+      +float /residuo
+    }
+    class DiagnosticoIndicador {
+      +float gapPares
+      +float gapArea
+      +float meta
+    }
+  }
+
+  Instituicao "1" --> "0..*" Curso : oferece
+  Instituicao "1" --> "0..*" PerfilDocenteIES : tem perfil no Censo
+  Instituicao "1" --> "0..*" DocentesPorArea : registra
+  AreaCine "1" --> "0..*" DocentesPorArea : agrega
+  AreaAvaliacao "0..*" --> "0..1" AreaCine : corresponde a
+  AreaAvaliacao "1" --> "0..*" Curso : avalia
+  Curso "1" *-- "0..3" AvaliacaoCPC : recebe
+  AvaliacaoCPC "1" *-- "8" IndicadorCPC : compõe
+  IndicadorCPC --> TipoIndicador
+
+  Representacao "1..*" --> "1..*" TipoIndicador : usa
+  Cenario "0..*" --> "1" Representacao : adota
+  Cenario "0..*" --> "1" AreaAvaliacao : roda na área
+  Cenario "1" *-- "10" Execucao : repetido em
+  Execucao "1" *-- "K" Grupo : produz
+  Curso "0..*" --> "0..*" Grupo : pertence a
+
+  Curso "1" --> "0..*" ReferenciaKNN : PUC-Rio busca
+  ReferenciaKNN "0..*" --> "1" Curso : referência
+  Curso "1" --> "0..1" PrevisaoRegime : tem
+  PrevisaoRegime "0..*" --> "1" PerfilDocenteIES : usa
+  Curso "1" --> "0..*" DiagnosticoIndicador : recebe
+  DiagnosticoIndicador "0..*" --> "1" Grupo : compara com pares do
+  DiagnosticoIndicador "0..*" --> "1" IndicadorCPC : sobre

@@ -1,0 +1,53 @@
+classDiagram
+  direction LR
+  class Cenario {
+    +codigo C1 a C8
+    +variaveis, hipotese
+  }
+  class Execucao {
+    <<linha da planilha>>
+    +area, escalonador
+    +algoritmo, K
+    +proporcaoTreino
+    +/metricas medias
+  }
+  class Divisao {
+    <<treino/teste>>
+    +semente 42 a 51
+    +metricas
+  }
+  class Grupo
+  class Curso
+  class ConfiguracaoKNN {
+    +filtros: area, grupo C2
+    +distancia: nao controlaveis
+    +Regime maior que PUC-Rio
+  }
+  class ReferenciaKNN {
+    +distancia
+    +freqEntreDivisoes
+  }
+  class ConfiguracaoRF {
+    +alvo: % nao horistas
+    +atributos sem vazamento
+    +modelo de base
+  }
+  class PrevisaoRegime {
+    +real, previsto
+    +/residuo
+  }
+  class DiagnosticoIndicador {
+    +gapPares, gapArea
+    +meta
+  }
+  Execucao "0..*" --> "1" Cenario : aplica
+  Execucao "1" *-- "10" Divisao : repetida em
+  Divisao "1" *-- "K" Grupo : produz
+  Curso "0..*" --> "0..*" Grupo : pertence a
+  Curso "1" --> "0..*" ReferenciaKNN : busca
+  ReferenciaKNN "0..*" --> "1" ConfiguracaoKNN : segue
+  ConfiguracaoKNN "0..*" --> "1" Grupo : dentro do
+  Curso "1" --> "0..1" PrevisaoRegime : tem
+  PrevisaoRegime "0..*" --> "1" ConfiguracaoRF : gerada por
+  Curso "1" --> "0..*" DiagnosticoIndicador : recebe
+  DiagnosticoIndicador "0..*" --> "1" Grupo : pares do

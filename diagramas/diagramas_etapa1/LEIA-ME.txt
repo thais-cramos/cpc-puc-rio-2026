@@ -1,0 +1,4 @@
+Modelos conceituais para a Etapa 1.
+AS-IS e TO-BE: BPMN 2.0 XML com elementos de processo, lanes e BPMN DI (posicionamento gráfico).
+UML: arquivo Mermaid (.mmd) editável.
+O AS-IS é um modelo hipotético de referência, não validado empiricamente na PUC-Rio.

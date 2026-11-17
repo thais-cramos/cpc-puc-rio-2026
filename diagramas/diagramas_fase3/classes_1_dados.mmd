@@ -1,0 +1,76 @@
+classDiagram
+  direction LR
+  class Instituicao {
+    <<Censo e CPC>>
+    +int codigoIES
+    +string nome
+    +string categoriaAdministrativa
+    +string organizacaoAcademica
+    +string uf
+  }
+  class PerfilDocenteIES {
+    <<Censo 2023 - por IES>>
+    +int ano
+    +int qtdTempoIntegral
+    +int qtdTempoParcial
+    +int qtdHorista
+    +int qtdDoutores
+    +int qtdMestres
+    +float idadeMedia
+  }
+  class DocentesPorArea {
+    <<Painel INEP - IES x area>>
+    +int ano
+    +int integralComDE
+    +int integralSemDE
+    +int tempoParcial
+    +int horista
+  }
+  class AreaCine {
+    +string codigoCine
+    +string nome
+  }
+  class AreaAvaliacao {
+    <<CPC>>
+    +int codigoArea
+    +string nome
+  }
+  class Curso {
+    <<CPC>>
+    +int codigoCurso
+    +string municipio
+    +string modalidade
+  }
+  class AvaliacaoCPC {
+    <<CPC 2017, 2019, 2023>>
+    +int ciclo
+    +float cpcContinuo
+    +int cpcFaixa
+    +int nParticipantes
+  }
+  class IndicadorCPC {
+    +TipoIndicador tipo
+    +float notaBruta
+    +float notaPadronizada
+    +bool controlavelPelaIES
+  }
+  class TipoIndicador {
+    <<enumeration>>
+    ENADE
+    IDD
+    Mestres
+    Doutores
+    RegimeTrabalho
+    OrganizacaoDidatica
+    Infraestrutura
+    Oportunidades
+  }
+  Instituicao "1" --> "0..*" Curso : oferece
+  Instituicao "1" --> "0..*" PerfilDocenteIES : tem perfil no Censo
+  Instituicao "1" --> "0..*" DocentesPorArea : registra
+  AreaCine "1" --> "0..*" DocentesPorArea : agrega
+  AreaAvaliacao "1" --> "0..*" Curso : avalia
+  AreaAvaliacao "0..*" --> "0..1" AreaCine : corresponde a
+  Curso "1" *-- "1..3" AvaliacaoCPC : recebe
+  AvaliacaoCPC "1" *-- "8" IndicadorCPC : compoe
+  IndicadorCPC "0..*" --> "1" TipoIndicador : tipo

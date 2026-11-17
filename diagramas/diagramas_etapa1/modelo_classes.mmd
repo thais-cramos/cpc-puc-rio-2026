@@ -1,0 +1,73 @@
+classDiagram
+ direction LR
+ class Instituicao {
+   +int codigoIES
+   +string nome
+   +string sigla
+   +string categoriaAdministrativa
+ }
+ class Curso {
+   +int codigoCurso
+   +string modalidade
+ }
+ class AreaAvaliacao {
+   +int codigoArea
+   +string nomeArea
+ }
+ class AvaliacaoCPC {
+   +int ano
+   +float cpcContinuo
+   +int cpcFaixa
+ }
+ class IndicadorCPC {
+   +string tipo
+   +float notaBruta
+   +float notaPadronizada
+ }
+ class RegistroCenso {
+   +int ano
+   +int matriculas
+   +int concluintes
+ }
+ class BaseAnalitica {
+   +string identificador
+   +string criterioSelecao
+   +string versao
+ }
+ class AtributoAnalitico {
+   +string nome
+   +string tipo
+   +string regraDerivacao
+ }
+ class Experimento {
+   +string idExperimento
+   +string cenario
+   +string algoritmo
+   +string parametros
+   +string versaoBase
+ }
+ class Grupo {
+   +int idGrupo
+   +string descricaoPerfil
+ }
+ class AtribuicaoGrupo {
+   +string idAtribuicao
+   +float distanciaOuSimilaridade
+ }
+ class DiagnosticoCurso {
+   +string idDiagnostico
+   +date dataGeracao
+   +string sintese
+ }
+ Instituicao "1" --> "0..*" Curso : oferece
+ Curso "1" --> "0..*" AvaliacaoCPC : possui
+ AreaAvaliacao "1" --> "0..*" AvaliacaoCPC : classifica
+ AvaliacaoCPC "1" *-- "0..*" IndicadorCPC : contem
+ Curso "1" --> "0..*" RegistroCenso : possui
+ BaseAnalitica "1" *-- "1..*" AtributoAnalitico : define
+ BaseAnalitica "1" --> "0..*" Experimento : utilizadaEm
+ Experimento "1" *-- "1..*" Grupo : produz
+ Grupo "1" --> "0..*" AtribuicaoGrupo : contem
+ Curso "1" --> "0..*" AtribuicaoGrupo : recebe
+ Curso "1" --> "0..*" DiagnosticoCurso : possui
+ DiagnosticoCurso "1" --> "1..*" AtribuicaoGrupo : sintetiza

@@ -1,0 +1,18 @@
+﻿Área;Papel;Sigla da IES;Nome da IES;Sigla da UF;% das 10 divisões;Distância;Nota de Regime (CPC);% horistas (CPC, curso);% integral (estimado no curso);% parcial (estimado no curso);Painel: integral;Painel: parcial;Painel: horistas;Painel: total;% horistas (painel, IES na área);Diferença painel − CPC (p.p.);Painel
+Engenharia Civil;PUC-Rio;PUC-RIO;PONTIFÍCIA UNIVERSIDADE CATÓLICA DO RIO DE JANEIRO;RJ;;0,0;2,5;38,0;55,4;6,5;51,0;6,0;35,0;92,0;38,0;-0,0;bate com o curso
+Engenharia Civil;Referência;UNISINOS;UNIVERSIDADE DO VALE DO RIO DOS SINOS;RS;100,0;4,3;4,7;5,0;40,2;54,8;44,0;60,0;6,0;110,0;5,5;0,5;bate com o curso
+Engenharia Civil;Referência;UCDB;UNIVERSIDADE CATÓLICA DOM BOSCO;MS;90,0;4,3;4,6;5,6;37,3;57,2;15,0;23,0;2,0;40,0;5,0;-0,6;bate com o curso
+Engenharia Civil;Referência;UP;UNIVERSIDADE POSITIVO;PR;100,0;5,2;4,5;7,1;78,8;14,1;28,0;5,0;4,0;37,0;10,8;3,7;soma outros cursos/campi
+Engenharia Civil;Referência;UVA;UNIVERSIDADE VEIGA DE ALMEIDA;RJ;100,0;5,7;5,0;0,0;73,9;26,1;17,0;6,0;0,0;23,0;0,0;0,0;bate com o curso
+Engenharia de Produção;PUC-Rio;PUC-RIO;PONTIFÍCIA UNIVERSIDADE CATÓLICA DO RIO DE JANEIRO;RJ;;0,0;1,9;48,2;45,5;6,4;50,0;7,0;53,0;110,0;48,2;0,0;bate com o curso
+Engenharia de Produção;Referência;MACKENZIE;UNIVERSIDADE PRESBITERIANA MACKENZIE;SP;100,0;1,4;4,1;13,5;51,9;34,6;48,0;32,0;15,0;95,0;15,8;2,3;soma outros cursos/campi
+Engenharia de Produção;Referência;PUCPR;PONTIFÍCIA UNIVERSIDADE CATÓLICA DO PARANÁ;PR;100,0;1,5;5,0;0,0;40,5;59,5;62,0;91,0;3,0;156,0;1,9;1,9;bate com o curso
+Engenharia de Produção;Referência;PUC GOIÁS;PONTIFÍCIA UNIVERSIDADE CATÓLICA DE GOIÁS;GO;100,0;1,6;4,4;9,1;48,1;42,8;18,0;16,0;11,0;45,0;24,4;15,3;soma outros cursos/campi
+Engenharia de Produção;Referência;UCS;UNIVERSIDADE DE CAXIAS DO SUL;RS;80,0;2,1;4,2;13,0;;;;;;;;;sem dado coletado
+Engenharia de Produção;Referência;UNIVALI;UNIVERSIDADE DO VALE DO ITAJAÍ;SC;80,0;2,2;4,1;14,6;;;;;;;;;sem dado coletado
+Arquitetura e Urbanismo;PUC-Rio;PUC-RIO;PONTIFÍCIA UNIVERSIDADE CATÓLICA DO RIO DE JANEIRO;RJ;;0,0;0,0;70,6;23,5;5,9;20,0;5,0;60,0;85,0;70,6;0,0;bate com o curso
+Arquitetura e Urbanismo;Referência;UGB;CENTRO UNIVERSITÁRIO GERALDO DI BIASE;RJ;100,0;3,5;5,0;0,0;31,8;68,2;7,0;15,0;0,0;22,0;0,0;0,0;bate com o curso
+Arquitetura e Urbanismo;Referência;UNIP;UNIVERSIDADE PAULISTA;SP;100,0;3,7;4,4;8,3;63,0;28,7;134,0;61,0;40,0;235,0;17,0;8,7;soma outros cursos/campi
+Arquitetura e Urbanismo;Referência;UNIMAR;UNIVERSIDADE DE MARÍLIA;SP;100,0;3,8;5,0;0,0;11,1;88,9;1,0;8,0;0,0;9,0;0,0;0,0;bate com o curso
+Arquitetura e Urbanismo;Referência;UNINASSAU;CENTRO UNIVERSITÁRIO MAURÍCIO DE NASSAU;PE;100,0;4,4;4,0;13,3;;;;;;;;;sem dado coletado
+Arquitetura e Urbanismo;Referência;UNIFACISA;CENTRO UNIVERSITÁRIO FACISA;PB;80,0;4,5;5,0;0,0;;;;;;;;;sem dado coletado
